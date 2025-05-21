@@ -1,49 +1,9 @@
 {
-  "name": "n8n-nodes-<...>",
-  "version": "0.1.0",
-  "description": "",
-  "keywords": [
-    "n8n-community-node-package"
-  ],
-  "license": "MIT",
-  "homepage": "",
   "author": {
-    "name": "",
-    "email": ""
+    "email": "support@speechischeap.com",
+    "name": "Speech is Cheap"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
-  },
-  "engines": {
-    "node": ">=18.10",
-    "pnpm": ">=9.1"
-  },
-  "packageManager": "pnpm@9.1.4",
-  "main": "index.js",
-  "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "build": "tsc && gulp build:icons",
-    "dev": "tsc --watch",
-    "format": "prettier nodes credentials --write",
-    "lint": "eslint nodes credentials package.json",
-    "lintfix": "eslint nodes credentials package.json --fix",
-    "prepublishOnly": "pnpm build && pnpm lint -c .eslintrc.prepublish.js nodes credentials package.json"
-  },
-  "files": [
-    "dist"
-  ],
-  "n8n": {
-    "n8nNodesApiVersion": 1,
-    "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
-    ],
-    "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
-    ]
-  },
+  "description": "Speech is Cheap n8n transcription node",
   "devDependencies": {
     "@typescript-eslint/parser": "^7.15.0",
     "eslint": "^8.56.0",
@@ -52,7 +12,52 @@
     "prettier": "^3.3.2",
     "typescript": "^5.5.3"
   },
+  "engines": {
+    "node": ">=18.10",
+    "pnpm": ">=9.1"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://speechischeap.com",
+  "keywords": [
+    "asr",
+    "automatic speech recognition",
+    "n8n",
+    "n8n-community-node-package",
+    "speech-to-text",
+    "speechischeap",
+    "stt",
+    "transcribe",
+    "transcription"
+  ],
+  "main": "index.js",
+  "n8n": {
+    "credentials": [
+      "dist/credentials/SpeechIsCheapApi.credentials.js"
+    ],
+    "n8nNodesApiVersion": 1,
+    "nodes": [
+      "dist/nodes/SpeechIsCheap/SpeechIsCheap.node.js"
+    ]
+  },
+  "name": "@speechischeap/n8n-nodes-transcribe",
+  "packageManager": "pnpm@9.1.4",
   "peerDependencies": {
     "n8n-workflow": "*"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/speechischeap/n8n-transcribe"
+  },
+  "scripts": {
+    "build": "tsc && gulp build:icons",
+    "dev": "tsc --watch",
+    "format": "prettier nodes credentials --write",
+    "lint": "eslint nodes credentials package.json",
+    "lintfix": "eslint nodes credentials package.json --fix",
+    "preinstall": "npx only-allow pnpm",
+    "prepublishOnly": "pnpm build && pnpm lint -c .eslintrc.prepublish.js nodes credentials package.json"
+  },
+  "version": "0.0.1"
 }
