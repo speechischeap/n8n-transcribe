@@ -55,7 +55,7 @@ export class SpeechIsCheap implements INodeType {
         description: 'The URL that will receive the transcription results when complete',
         displayOptions: { show: { operation: ['transcribe'] } },
         name: 'webhook_url',
-        placeholder: 'https://your-webhook-url.com/callback', // REVISIT
+        placeholder: 'https://your-webhook-url.com/callback', // REVISIT(ik)
         required: true,
         type: 'string',
       },

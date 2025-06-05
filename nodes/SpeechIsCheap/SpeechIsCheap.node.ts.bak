@@ -1,0 +1,63 @@
+import type {
+	// IExecuteFunctions,
+	// INodeExecutionData,
+	INodeType,
+	INodeTypeDescription,
+} from 'n8n-workflow';
+
+import { NodeConnectionType } from 'n8n-workflow';
+
+export class SpeechIsCheapNode implements INodeType {
+  description: INodeTypeDescription = {
+    defaults: { name: 'Speech is Cheap' },
+    description: 'Low cost 𝐰𝐨𝐫𝐥𝐝 𝐜𝐥𝐚𝐬𝐬 transcriptions',
+    displayName: 'Speech is Cheap',
+    group: ['transform'],
+    icon: 'file:speechischeap.svg',
+    inputs: [NodeConnectionType.Main],
+    name: 'speechIsCheap',
+    outputs: [NodeConnectionType.Main],
+		version: 1,
+
+    credentials: [{
+      name: 'speechIsCheapApi',
+      required: true,
+    }],
+
+    requestDefaults: {
+      baseURL: 'https://api.speechischeap.com/v2/jobs',
+      headers: { 'Content-Type': 'application/json' },
+    },
+
+    properties: [{
+      default: 'speech',
+      displayName: 'Resource',
+      name: 'resource',
+      noDataExpression: true,
+      type: 'options',
+
+      options: [{
+        name: 'Speech',
+        value: 'speech',
+      }],
+    }, {
+      displayName: 'Operation',
+      displayOptions: { show: { resource: ['speech'] } },
+      name: 'operation',
+      noDataExpression: true,
+      type: 'options',
+
+      options: [{
+        action: 'Transcribe audio',
+        description: 'Creates a new audio transcription',
+        name: 'Transcribe',
+        value: 'transcribe',
+
+        routing: {
+          request: { method: 'POST' },
+        },
+      }],
+      default: 'transcribe',
+    }],
+  }
+}
